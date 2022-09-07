@@ -1,36 +1,42 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import * as Font from "expo-font";
+import { useFonts } from "expo-font";
 
 const Heading = () => {
 
-  // const [isFontReady, setIsFontReady] = useState(false);
+  const [fontsLoaded] = useFonts({
+    '116angmuburi': require('../assets/fonts/116angmuburi.ttf')
+  })
 
-  // useEffect(async ()=>{
-  //   await Font.loadAsync({
-  //     "Agency FB": require('../assets/fonts/Agency-FB.ttf')
-  //   });
-  //   setIsFontReady(true);
-  // }, []);
+  if(!fontsLoaded){
+    return null;
+  }
 
   return (
     <View style={st.header}>
-        <Text style={st.headerText}>TODO List</Text>
+      {
+        fontsLoaded && (
+          <Text style={st.headerText}>TODO List</Text>
+        )
+      }
     </View>
   )
 }
 
 const st = StyleSheet.create({
     header:{
-        marginTop:60,
-        marginBottom:50
+        marginTop:80,
+        marginBottom:50,
+        // textShadowColor: '#ffffff',
+        // textShadowOffset: {width: 1, height: 1},
+        // textShadowRadius: 1
     },
     headerText:{
         textAlign: 'center',
         fontSize: 70,
-        // fontFamily: 'Agency FB',
+        fontFamily: '116angmuburi',
         color: '#ffffff',
-        fontWeight: '600'
+        
     }
 })
 

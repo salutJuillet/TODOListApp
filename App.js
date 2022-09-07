@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, ScrollView, StyleSheet } from 'react-native'
+import { SafeAreaView, View, ScrollView, StyleSheet } from 'react-native'
 import Heading from './components/Heading'
 import Input from './components/Input'
 import Button from './components/Button'
@@ -58,7 +58,7 @@ const App = () => {
   }
 
   return (
-    <View style={st.container}>
+    <SafeAreaView style={st.container}>
       <Heading />
       <ScrollView style={st.content} keyboardShouldPersistTaps='always'>
         <View style={st.inputGroup}>
@@ -73,7 +73,7 @@ const App = () => {
                   setIsChecked={setIsChecked} />
       </ScrollView>
       <TabBar type={type} setType={setType} />
-    </View>
+    </SafeAreaView>
   )
 }
 
